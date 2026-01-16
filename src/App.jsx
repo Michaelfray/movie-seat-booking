@@ -1,35 +1,109 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="movie-container">
+        <label htmlFor="movie">Pick a movie:</label>
+        <select name="movie" id="movie">
+          <option value="100">Fast and furious 6 (100 kr)</option>
+          <option value="50">The mummy returns (50 kr)</option>
+          <option value="70">Jumanji: Welcome to the Jungle (70 kr)</option>
+          <option value="40">Rampage (40 kr)</option>
+        </select>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <ul className="showcase">
+        <li>
+          <div className="seat"></div>
+          <small>N/A</small>
+        </li>
+        <li>
+          <div className="seat selected"></div>
+          <small>Selected</small>
+        </li>
+        <li>
+          <div className="seat occupied"></div>
+          <small>Occupied</small>
+        </li>
+      </ul>
+
+      <div className="container">
+        <div className="screen"></div>
+
+        <div className="row">
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+        </div>
+
+        <div className="row">
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat occupied"></div>
+          <div className="seat occupied"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+        </div>
+
+        <div className="row">
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat occupied"></div>
+          <div className="seat occupied"></div>
+        </div>
+
+        <div className="row">
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+        </div>
+
+        <div className="row">
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat occupied"></div>
+          <div className="seat occupied"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+        </div>
+
+        <div className="row">
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat"></div>
+          <div className="seat occupied"></div>
+          <div className="seat occupied"></div>
+          <div className="seat occupied"></div>
+          <div className="seat"></div>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+
+      <p className="text">
+        You have selected <span id="count">0</span> seats for a price of $
+        <span id="total">0</span>
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
