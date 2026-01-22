@@ -1,4 +1,5 @@
 import './App.css';
+import SeatGrid from './SeatGrid';
 
 function App() {
   return (
