@@ -1,7 +1,18 @@
-import './App.css';
-import SeatGrid from './SeatGrid';
+import "./App.css";
+import SeatGrid from "./components/SeatGrid";
+import { useState } from "react";
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  function handleCount(selected) {
+    if (selected) {
+      setCount((currentCount) => currentCount + 1);
+    } else {
+      setCount((currentCount) => currentCount - 1);
+    }
+  }
+
   return (
     <>
       <div className="movie-container">
@@ -32,7 +43,7 @@ function App() {
       <div className="container">
         <div className="screen"></div>
 
-        <div className="row">
+        {/* <div className="row">
           <div className="seat"></div>
           <div className="seat"></div>
           <div className="seat"></div>
@@ -96,12 +107,13 @@ function App() {
           <div className="seat occupied"></div>
           <div className="seat occupied"></div>
           <div className="seat"></div>
-        </div>
+        </div> */}
+        <SeatGrid handleCount={handleCount} />
       </div>
 
       <p className="text">
-        You have selected <span id="count">0</span> seats for a price of $
-        <span id="total">0</span>
+        You have selected <span id="count">{count}</span> seats for a price of $
+        <span id="total">{0}</span>
       </p>
     </>
   );
