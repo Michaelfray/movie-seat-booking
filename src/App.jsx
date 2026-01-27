@@ -1,11 +1,22 @@
 import "./App.css";
 import SeatGrid from "./components/SeatGrid";
 import { useEffect, useState } from "react";
+import Movie from "./components/MovieClass";
 
 function App() {
   const [count, setCount] = useState(0);
   const [price, setPrice] = useState(100);
   const total = count * price;
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/movies")
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data.map((d) => new Movie(d.id, d.title, d.price, d.poster)));
+        setPrice(data[0].price);
+      });
+  }, []);
 
   useEffect(() => {
     console.log(total);
@@ -26,13 +37,14 @@ function App() {
         <select
           name="movie"
           id="movie"
-          // defaultValue="100"
+          defaultValue={price}
           onChange={(e) => setPrice(Number(e.target.value))}
         >
-          <option value="100">Fast and furious 6 (100 kr)</option>
-          <option value="50">The mummy returns (50 kr)</option>
-          <option value="70">Jumanji: Welcome to the Jungle (70 kr)</option>
-          <option value="40">Rampage (40 kr)</option>
+          {movies.map((movie) => (
+            <option key={movie.id} value={movie.price}>
+              {movie.title} ({movie.price} kr)
+            </option>
+          ))}
         </select>
       </div>
 
