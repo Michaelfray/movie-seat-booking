@@ -1,0 +1,8 @@
+{
+  "movies": [
+    { "id": 1, "title": "Fast and furious 6", "price": 100, "poster": "https://media.gameshop.se/wp-content/uploads/2019/09/16142406/Fast-Furious-6-1.jpg" },
+    { "id": 2, "title": "The mummy returns", "price": 50, "poster": "https://i5.walmartimages.com/seo/The-Mummy-Returns-Movie-Poster-11-x-17_be3ae024-fa43-472f-bd92-0c26e955ad2e.70fae098a8d98eeec926e4249fccf65a.jpeg" },
+    { "id": 3, "title": "Jumanji", "price": 70, "poster": "https://img-cdn.sfanytime.com/COVERM/COVERM_894dc774-a769-47ca-b35d-322829c86b85_01.jpg?ar=0.692&fit=crop&fm=pjpg&w=415&s=5daf9930736111504dd8f605e4852307" },
+    { "id": 4, "title": "Rampage", "price": 40, "poster": "https://img.bigshopper.se/65ENGZA7GEc3BA3tEg5So2eWYLz6pEECQI4VCtPKSNo/rs:fit:400:400/q:90/bg:ffffff/exar:1/aHR0cHM6Ly9wcm94eS5iaWdzaG9wcGVyLmNvbS9wcm94eT91cmw9aHR0cHMlM0ElMkYlMkZtLm1lZGlhLWFtYXpvbi5jb20lMkZpbWFnZXMlMkZJJTJGNTFVTFclMkJicXlXTC5fU0w1MDBfLmpwZyZ0bGQ9c2U/.webp" }
+  ]
+}
