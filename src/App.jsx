@@ -2,14 +2,16 @@ import "./App.css";
 import SeatGrid from "./components/SeatGrid";
 import { useEffect, useState } from "react";
 import Movie from "./components/MovieClass";
+import ShowForm from "./components/ShowForm";
+import Button from "./components/Button";
 
 function App() {
   const [count, setCount] = useState(0);
   const [price, setPrice] = useState(100);
-  const total = count * price;
   const [movies, setMovies] = useState([]);
   const [showForm, setShowForm] = useState(false);
 
+  const total = count * price;
 
   useEffect(() => {
     fetch("http://localhost:3001/movies")
@@ -20,15 +22,11 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(total);
-  }, [total]);
-
   function handleCount(selected) {
     if (selected) {
-      setCount((currentCount) => currentCount + 1);
+      setCount((c) => c + 1);
     } else {
-      setCount((currentCount) => currentCount - 1);
+      setCount((c) => c - 1);
     }
   }
 
@@ -67,72 +65,6 @@ function App() {
 
       <div className="container">
         <div className="screen"></div>
-
-        {/* <div className="row">
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-        </div>
-
-        <div className="row">
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat occupied"></div>
-          <div className="seat occupied"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-        </div>
-
-        <div className="row">
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat occupied"></div>
-          <div className="seat occupied"></div>
-        </div>
-
-        <div className="row">
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-        </div>
-
-        <div className="row">
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat occupied"></div>
-          <div className="seat occupied"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-        </div>
-
-        <div className="row">
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat"></div>
-          <div className="seat occupied"></div>
-          <div className="seat occupied"></div>
-          <div className="seat occupied"></div>
-          <div className="seat"></div>
-        </div> */}
         <SeatGrid handleCount={handleCount} />
       </div>
 
@@ -140,6 +72,10 @@ function App() {
         You have selected <span id="count">{count}</span> seats for a price of $
         <span id="total">{total}</span>
       </p>
+
+      <Button onClick={() => setShowForm(true)}>Boka</Button>
+
+      {showForm && <ShowForm onCancel={() => setShowForm(false)} />}
     </>
   );
 }
