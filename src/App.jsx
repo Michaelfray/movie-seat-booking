@@ -2,7 +2,7 @@ import "./App.css";
 import SeatGrid from "./components/SeatGrid";
 import { useEffect, useState } from "react";
 import Movie from "./components/MovieClass";
-import ShowForm from "./components/Showform";
+import ShowForm from "./components/Bookingform";
 import Button from "./components/Button";
 
 function App() {
