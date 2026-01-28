@@ -8,6 +8,8 @@ function App() {
   const [price, setPrice] = useState(100);
   const total = count * price;
   const [movies, setMovies] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+
 
   useEffect(() => {
     fetch("http://localhost:3001/movies")
