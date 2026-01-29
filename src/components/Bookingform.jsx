@@ -9,7 +9,7 @@ export default function ShowForm({ onCancel }) {
     console.log(name);
   }, [name]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault(); // stoppar att sidan laddas om
     if (name === "") {
       alert("Du måste ange namn");
@@ -21,16 +21,29 @@ export default function ShowForm({ onCancel }) {
       return;
     }
 
-    // Namn får inte innehålla siffror
+    // Name label can not contain numbers
     if (/\d/.test(name)) {
       alert("Namnet får inte innehålla siffror");
       return;
     }
 
-    // Telefonnummer får inte innehålla bokstäver
+    // Phonenumber can not contain letters
     if (/[a-zA-Z]/.test(phone)) {
       alert("Numret får inte innehålla bokstäver");
       return;
+    }
+
+    const newCustomer = { name, phone };
+    try {
+      await fetch("http://localhost:3001/bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newCustomer),
+      });
+    } catch (error) {
+      console.log(error);
     }
 
     // här kan du skicka datan till JSON-server senare
