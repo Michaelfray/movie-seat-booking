@@ -1,12 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 
 export default function ShowForm({ onCancel }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
+  useEffect(() => {
+    console.log(name);
+  }, [name]);
+
   function handleSubmit(e) {
     e.preventDefault(); // stoppar att sidan laddas om
+    if (name === "") {
+      alert("Du måste ange namn");
+      return;
+    }
+
+    if (phone === "") {
+      alert("Du måste ange nummer");
+      return;
+    }
+
+    // Namn får inte innehålla siffror
+    if (/\d/.test(name)) {
+      alert("Namnet får inte innehålla siffror");
+      return;
+    }
+
+    // Telefonnummer får inte innehålla bokstäver
+    if (/[a-zA-Z]/.test(phone)) {
+      alert("Numret får inte innehålla bokstäver");
+      return;
+    }
 
     // här kan du skicka datan till JSON-server senare
     console.log("Booking sent:");
@@ -31,7 +56,7 @@ export default function ShowForm({ onCancel }) {
               value={name}
               placeholder="Skriv ditt namn"
               onChange={(e) => setName(e.target.value)}
-              required
+              //  required //
             />
           </div>
 
@@ -42,7 +67,7 @@ export default function ShowForm({ onCancel }) {
               value={phone}
               placeholder="070 123 45 67"
               onChange={(e) => setPhone(e.target.value)}
-              required
+              // required //
             />
           </div>
 
