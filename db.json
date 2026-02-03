@@ -1,12 +1,6 @@
 {
   "movies": [
     {
-      "id": "3",
-      "title": "Jumanji",
-      "price": 70,
-      "poster": "https://img-cdn.sfanytime.com/COVERM/COVERM_894dc774-a769-47ca-b35d-322829c86b85_01.jpg?ar=0.692&fit=crop&fm=pjpg&w=415&s=5daf9930736111504dd8f605e4852307"
-    },
-    {
       "id": "1",
       "title": "Fast and furious 6",
       "price": 100,
@@ -23,13 +17,15 @@
       "title": "Rampage",
       "price": 40,
       "poster": "https://img.bigshopper.se/65ENGZA7GEc3BA3tEg5So2eWYLz6pEECQI4VCtPKSNo/rs:fit:400:400/q:90/bg:ffffff/exar:1/aHR0cHM6Ly9wcm94eS5iaWdzaG9wcGVyLmNvbS9wcm94eT91cmw9aHR0cHMlM0ElMkYlMkZtLm1lZGlhLWFtYXpvbi5jb20lMkZpbWFnZXMlMkZJJTJGNTFVTFclMkJicXlXTC5fU0w1MDBfLmpwZyZ0bGQ9c2U/.webp"
+    },
+    {
+      "id": "67ad",
+      "title": "Jumanji",
+      "price": 70,
+      "poster": "https://img-cdn.sfanytime.com/COVERM/COVERM_894dc774-a769-47ca-b35d-322829c86b85_01.jpg?ar=0.692&fit=crop&fm=pjpg&w=415&s=5daf9930736111504dd8f605e4852307,"
     }
   ],
   "bookings": [
-    {
-      "id": "4589",
-      "name": "banjsnbjanbsa",
-      "phone": "0700283286"
-    }
+    {}
   ]
 }
