@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import Movie from "./components/MovieClass";
 import ShowForm from "./components/Bookingform";
 import Button from "./components/Button";
+import Admin from "./components/Admin";
+import Cinema from "./components/Cinema";
 
 function App() {
   const [count, setCount] = useState(0);
   const [price, setPrice] = useState(100);
   const [movies, setMovies] = useState([]);
-  const [showForm, setShowForm] = useState(false);
+
+  const [showAdmin, setShowAdmin] = useState(false);
 
   const total = count * price;
 
@@ -32,50 +35,33 @@ function App() {
 
   return (
     <>
-      <div className="movie-container">
-        <label htmlFor="movie">Pick a movie:</label>
-        <select
-          name="movie"
-          id="movie"
-          defaultValue={price}
-          onChange={(e) => setPrice(Number(e.target.value))}
+      <button onClick={() => setShowAdmin(!showAdmin)}>
+        {showAdmin ? "home" : "admin"}
+      </button>
+      {showAdmin ? (
+        <Admin />
+      ) : (
+        <div
+          style={{
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          {movies.map((movie) => (
-            <option key={movie.id} value={movie.price}>
-              {movie.title} ({movie.price} kr)
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <ul className="showcase">
-        <li>
-          <div className="seat"></div>
-          <small>N/A</small>
-        </li>
-        <li>
-          <div className="seat selected"></div>
-          <small>Selected</small>
-        </li>
-        <li>
-          <div className="seat occupied"></div>
-          <small>Occupied</small>
-        </li>
-      </ul>
-
-      <div className="container">
-        <div className="screen"></div>
-        <SeatGrid handleCount={handleCount} />
-      </div>
-
-      <p className="text">
-        You have selected <span id="count">{count}</span> seats for a price of $
-        <span id="total">{total}</span>
-      </p>
-
-      <Button onClick={() => setShowForm(true)}>Boka</Button>
-
-      {showForm && <ShowForm onCancel={() => setShowForm(false)} />}
+          <Cinema
+            count={count}
+            setCount={setCount}
+            price={price}
+            setPrice={setPrice}
+            movies={movies}
+            setMovies={setMovies}
+            handleCount={handleCount}
+            total={total}
+          />
+        </div>
+      )}
     </>
   );
 }
