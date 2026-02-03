@@ -10,7 +10,8 @@ export default function ShowForm({ onCancel }) {
   }, [name]);
 
   async function handleSubmit(e) {
-    e.preventDefault(); // stoppar att sidan laddas om
+    e.preventDefault();
+
     if (name === "") {
       alert("Du måste ange namn");
       return;
@@ -21,19 +22,18 @@ export default function ShowForm({ onCancel }) {
       return;
     }
 
-    // Name label can not contain numbers
     if (/\d/.test(name)) {
       alert("Namnet får inte innehålla siffror");
       return;
     }
 
-    // Phonenumber can not contain letters
     if (/[a-zA-Z]/.test(phone)) {
       alert("Numret får inte innehålla bokstäver");
       return;
     }
 
     const newCustomer = { name, phone };
+
     try {
       await fetch("http://localhost:3001/bookings", {
         method: "POST",
@@ -46,22 +46,50 @@ export default function ShowForm({ onCancel }) {
       console.log(error);
     }
 
-    // här kan du skicka datan till JSON-server senare
     console.log("Booking sent:");
     console.log("Name:", name);
     console.log("Phone:", phone);
 
     alert("Bokningen är bekräftad! Tack för din reservation.");
 
-    onCancel(); // stänger formuläret
+    onCancel();
   }
 
   return (
-    <div className="form-overlay">
-      <div className="form-container">
-        <h2>Booking information</h2>
+    <div
+      style={{
+        background: "rgba(0,0,0,0.6)",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 999,
+      }}
+    >
+      <div
+        style={{
+          background: "white",
+          color: "black",
+          padding: "25px",
+          borderRadius: "12px",
+          width: "320px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "15px",
+          boxShadow: "0 0 20px rgba(0,0,0,0.4)",
+          zIndex: 1000,
+        }}
+      >
+        <h2 style={{ marginTop: 0 }}>Booking information</h2>
 
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+        >
           <div className="form-group">
             <label>Namn</label>
             <input
@@ -69,7 +97,7 @@ export default function ShowForm({ onCancel }) {
               value={name}
               placeholder="Skriv ditt namn"
               onChange={(e) => setName(e.target.value)}
-              //  required //
+              style={{ padding: "8px" }}
             />
           </div>
 
@@ -80,13 +108,25 @@ export default function ShowForm({ onCancel }) {
               value={phone}
               placeholder="070 123 45 67"
               onChange={(e) => setPhone(e.target.value)}
-              // required //
+              style={{ padding: "8px" }}
             />
           </div>
 
-          <div className="button-row">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: "10px",
+            }}
+          >
             <Button type="submit">Skicka</Button>
-            <Button onClick={onCancel}>Cancel</Button>
+            <Button
+              onClick={onCancel}
+              type="button"
+              style={{ background: "lightgray" }}
+            >
+              Cancel
+            </Button>
           </div>
         </form>
       </div>
