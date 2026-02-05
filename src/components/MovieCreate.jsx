@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const MovieCreate = () => {
   const [title, setTitle] = useState("");
@@ -7,15 +6,13 @@ const MovieCreate = () => {
   const [poster, setPoster] = useState("");
 
   async function handleSubmit() {
-    // 🔥 Validering – hindra tomma strängar
     if (!title.trim() || !poster.trim()) {
-      alert("Title och poster får inte vara tomma.");
+      alert("Title and poster cannot be empty.");
       return;
     }
 
-    // 🔥 Validering – hindra felaktigt pris
     if (!price || isNaN(price) || Number(price) <= 0) {
-      alert("Pris måste vara ett nummer större än 0.");
+      alert("Price must be a number greater than 0.");
       return;
     }
 
@@ -37,7 +34,7 @@ const MovieCreate = () => {
         return;
       }
 
-      alert("Movie is added!");
+      alert("Movie added!");
       setTitle("");
       setPrice("");
       setPoster("");
@@ -50,43 +47,90 @@ const MovieCreate = () => {
     <div
       style={{
         background: "#2c2c3a",
-        padding: "20px",
-        borderRadius: "10px",
+        padding: "30px",
+        borderRadius: "12px",
         color: "white",
-        maxWidth: "600px",
+        width: "400px",
         margin: "20px auto",
-        display: "flex",
-        flexDirection: "column",
-        gap: "10px",
+        textAlign: "center",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.25)",
       }}
     >
-      <h3>Movie Post</h3>
+      <h2 style={{ marginBottom: "25px", fontSize: "24px" }}>Movie Post</h2>
 
-      <label htmlFor="title">title</label>
+      {/* TITLE */}
+      <label
+        style={{ display: "block", textAlign: "left", marginBottom: "5px" }}
+      >
+        Title
+      </label>
       <input
         type="text"
-        id="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        style={{
+          width: "100%",
+          padding: "10px",
+          borderRadius: "6px",
+          border: "none",
+          marginBottom: "15px",
+        }}
       />
 
-      <label htmlFor="price">price</label>
+      {/* PRICE */}
+      <label
+        style={{ display: "block", textAlign: "left", marginBottom: "5px" }}
+      >
+        Price
+      </label>
       <input
         type="number"
-        id="price"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
+        style={{
+          width: "100%",
+          padding: "10px",
+          borderRadius: "6px",
+          border: "none",
+          marginBottom: "15px",
+        }}
       />
 
-      <label htmlFor="poster">poster</label>
+      {/* POSTER */}
+      <label
+        style={{ display: "block", textAlign: "left", marginBottom: "5px" }}
+      >
+        Poster URL
+      </label>
       <input
         type="text"
-        id="poster"
         value={poster}
         onChange={(e) => setPoster(e.target.value)}
+        style={{
+          width: "100%",
+          padding: "10px",
+          borderRadius: "6px",
+          border: "none",
+          marginBottom: "20px",
+        }}
       />
 
-      <button onClick={handleSubmit}>Skicka</button>
+      <button
+        onClick={handleSubmit}
+        style={{
+          width: "100%",
+          padding: "12px",
+          background: "white",
+          color: "#242333",
+          borderRadius: "8px",
+          fontWeight: "bold",
+          cursor: "pointer",
+          border: "none",
+          fontSize: "16px",
+        }}
+      >
+        Skicka
+      </button>
     </div>
   );
 };
