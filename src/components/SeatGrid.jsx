@@ -46,8 +46,10 @@ export default function SeatGrid({ handleCount }) {
                 ${isOccupied ? "occupied" : ""}
               `}
                 onClick={() => {
-                  handleSeatClick(rowIndex, seatIndex);
-                  handleCount(!isSelected);
+                  if (!isOccupied) {
+                    handleSeatClick(rowIndex, seatIndex);
+                    handleCount(!isSelected);
+                  }
                 }}
               ></div>
             );
