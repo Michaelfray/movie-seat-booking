@@ -24,7 +24,7 @@ export default function MovieList() {
 
       {movies.length === 0 && <p>Inga filmer hittades...</p>}
 
-      {/* ⭐ GRID / FLEX WRAPPER */}
+      {/*  GRID / FLEX WRAPPER */}
       <div
         style={{
           display: "flex",
