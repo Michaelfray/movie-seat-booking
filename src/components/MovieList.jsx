@@ -40,11 +40,11 @@ export default function MovieList() {
               background: "#2c2c3a",
               padding: "15px",
               borderRadius: "8px",
-              width: "250px", // ⭐ fixerar kortbredd för snygg grid
+              width: "250px", //  fixerar kortbredd för snygg grid
               textAlign: "left",
             }}
           >
-            {/* ⭐ POSTER-BILD */}
+            {/*  POSTER-BILD */}
             <img
               src={movie.poster}
               alt={movie.title}
